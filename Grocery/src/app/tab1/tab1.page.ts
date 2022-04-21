@@ -3,8 +3,8 @@ import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { GroceriesServiceService } from '../groceries-service.service';
 import { InputDialogServiceService } from '../input-dialog-service.service';
-import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
-// import { SocialSharing } from '@ionic-native/social-sharing';
+// import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @Component({
   selector: 'app-tab1',
