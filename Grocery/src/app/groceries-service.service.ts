@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { map, filter, scan, catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 
@@ -25,18 +25,16 @@ export class GroceriesServiceService {
     this.dataChanged$ = this.dataChangeSubject.asObservable();
    }
 
-  // getItems() {           //==> Not correct. Just a placeholder.
-  //   return this.items; 
-  // }
-
-  getItems(): Observable<object> {
-    return this.http.get(this.baseURL + '/api/groceries').pipe(
-      map(this.extractData),
-      catchError(this.handleError)
-    );
+ 
+  getItems(): Observable<object[]> {
+    return this.http.get(this.baseURL + '/api/groceries')
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError)
+      );
   }
 
-  private extractData(res: Response) {
+  private extractData(res: Response | any) {
     let body = res;
     return body || {};
   }
@@ -62,7 +60,6 @@ export class GroceriesServiceService {
   }
 
   addItem(item) {
-    // console.log("#### Add Item - Name = ", item);
     this.http.post(this.baseURL + "/api/groceries/", item).subscribe(res => {
       this.items = res;
       this.dataChangeSubject.next(true);

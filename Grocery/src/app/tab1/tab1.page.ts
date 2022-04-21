@@ -4,7 +4,7 @@ import { AlertController } from '@ionic/angular';
 import { GroceriesServiceService } from '../groceries-service.service';
 import { InputDialogServiceService } from '../input-dialog-service.service';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
-
+// import { SocialSharing } from '@ionic-native/social-sharing';
 
 @Component({
   selector: 'app-tab1',
@@ -42,14 +42,14 @@ export class Tab1Page {
         error => this.errorMessage = <any>error);
   }
 
-  async removeItem(id) {
+  removeItem(id) {
     // console.log("Removing Item - ", item, index);
     // const toast = await this.toastCtrl.create({
     //   message: 'Removing Item - ' + index + ' ...',
     //   duration: 3000
     // });
     // await toast.present();
-    this.dataService.removeItem(id);
+    this.dataService.removeItem(id); 
   }
 
   async shareItem(item) {

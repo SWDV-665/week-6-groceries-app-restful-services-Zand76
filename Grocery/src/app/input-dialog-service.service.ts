@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { GroceriesServiceService } from './groceries-service.service';
 
@@ -10,7 +9,6 @@ import { GroceriesServiceService } from './groceries-service.service';
 export class InputDialogServiceService {
 
   constructor(
-    public toastCtrl: ToastController, 
     public alertCtrl: AlertController,
     public dataService: GroceriesServiceService
     ) {
