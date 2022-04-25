@@ -26,15 +26,15 @@ export class GroceriesServiceService {
    }
 
  
-  getItems(): Observable<object[]> {
-    return this.http.get(this.baseURL + '/api/groceries')
+  getItems(): Observable<any> {
+    return this.http.get<any>(this.baseURL + '/api/groceries')
       .pipe(
         map(this.extractData),
         catchError(this.handleError)
       );
   }
 
-  private extractData(res: Response | any) {
+  private extractData(res: Response) {
     let body = res;
     return body || {};
   }
@@ -52,7 +52,7 @@ export class GroceriesServiceService {
   }
 
   removeItem(id) {
-    console.log("#### Remove Item - id = ", id);
+    console.log("Remove Item - id = ", id);
     this.http.delete(this.baseURL + "/api/groceries/" + id).subscribe(res => {
       this.items = res;
       this.dataChangeSubject.next(true);

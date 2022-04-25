@@ -4,7 +4,7 @@ import { AlertController } from '@ionic/angular';
 import { GroceriesServiceService } from '../groceries-service.service';
 import { InputDialogServiceService } from '../input-dialog-service.service';
 // import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
-import { SocialSharing } from '@ionic-native/social-sharing';
+// import { SocialSharing } from '@ionic-native/social-sharing';
 
 @Component({
   selector: 'app-tab1',
@@ -24,7 +24,7 @@ export class Tab1Page {
     public alertCtrl: AlertController,
     public dataService: GroceriesServiceService,
     public inputDialogService: InputDialogServiceService,
-    public socialSharing: SocialSharing,
+    // public socialSharing: SocialSharing,
     ) 
       { dataService.dataChanged$.subscribe((dataChanged: boolean) => {
         this.loadItems();
@@ -60,15 +60,15 @@ export class Tab1Page {
     });
     await toast.present();
 
-    let message = "Grocery Item - Name: " + item.name + " - Quantity: " + item.quantity;
-    let subject = "Shared via Groceries app";
+    // let message = "Grocery Item - Name: " + item.name + " - Quantity: " + item.quantity;
+    // let subject = "Shared via Groceries app";
     
-     this.socialSharing.share(message, subject).then(() => {
-        //Sharing via email is possible
-      console.log("Shared successfully!");
-    }).catch((error) => {
-      console.log("Error while sharing ", error);
-    });
+    //  this.socialSharing.share(message, subject).then(() => {
+    //     //Sharing via email is possible
+    //   console.log("Shared successfully!");
+    // }).catch((error) => {
+    //   console.log("Error while sharing ", error);
+    // });
   }
 
   async editItem(item, index) {

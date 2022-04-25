@@ -14,16 +14,16 @@
   </ion-header>
 
   <div class="ion-text-center">
-    <h3 class="no-item" *ngIf="loadItems().length === 0">
-      <!-- <h3 class="no-item" *ngIf="items.length === 0"> -->
+    <!-- <h3 class="no-item" *ngIf="loadItems().length === 0"> -->
+      <h3 class="no-item" *ngIf="items.length === 0">
       No items on the list!
     </h3>
   </div>
 
   <!-- List of Sliding Items -->
   <ion-list>
-    <ion-item-sliding *ngFor="let item of loadItems(); let i = index">
-    <!-- <ion-item-sliding *ngFor="let item of items; let i = index"> -->
+    <!-- <ion-item-sliding *ngFor="let item of loadItems(); let i = index"> -->
+    <ion-item-sliding *ngFor="let item of items; let i = index">
       <ion-item>
         <ion-label>
           {{item.name}}<br>
