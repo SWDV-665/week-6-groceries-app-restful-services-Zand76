@@ -51,15 +51,16 @@ export class GroceriesServiceService {
     return Observable.throw(errMsg); // <== Fix this
   }
 
-  removeItem(id) {
-    console.log("Remove Item - id = ", id);
-    this.http.delete(this.baseURL + "/api/groceries/" + id).subscribe(res => {
+  removeItem(item, index) {
+    console.log("Deleting Item = ", item);
+    this.http.delete(this.baseURL + "/api/groceries/" + item._id, item).subscribe(res => {
       this.items = res;
       this.dataChangeSubject.next(true);
     });
   }
 
   addItem(item) {
+    console.log("Adding item")
     this.http.post(this.baseURL + "/api/groceries/", item).subscribe(res => {
       this.items = res;
       this.dataChangeSubject.next(true);
@@ -68,7 +69,7 @@ export class GroceriesServiceService {
 
   editItem(item, index) {
     console.log("Editing Item = ", item);
-    this.http.delete(this.baseURL + "/api/groceries/" + item._id, item).subscribe(res => {
+    this.http.put(this.baseURL + "/api/groceries/" + item._id, item).subscribe(res => {
       this.items = res;
       this.dataChangeSubject.next(true);
     });

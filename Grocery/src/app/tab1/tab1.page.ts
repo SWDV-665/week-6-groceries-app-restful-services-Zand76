@@ -42,14 +42,14 @@ export class Tab1Page {
         error => this.errorMessage = <any>error);
   }
 
-  removeItem(id) {
-    // console.log("Removing Item - ", item, index);
-    // const toast = await this.toastCtrl.create({
-    //   message: 'Removing Item - ' + index + ' ...',
-    //   duration: 3000
-    // });
-    // await toast.present();
-    this.dataService.removeItem(id); 
+  async removeItem(item, index) {
+    console.log("Removing Item - ", item, index);
+    const toast = await this.toastCtrl.create({
+      message: "Removing Item - " + index + " ...",
+      duration: 3000
+    });
+    await toast.present();
+    this.dataService.removeItem(item, index);
   }
 
   async shareItem(item) {
@@ -81,8 +81,13 @@ export class Tab1Page {
     this.inputDialogService.showPrompt(item, index);
   }
 
-  addItem() {
+  async addItem() {
     console.log("Adding Item");
+    const toast = await this.toastCtrl.create({
+      message: "Adding Item",
+      duration: 3000
+    });
+    await toast.present();
     this.inputDialogService.showPrompt();
   }
 }
